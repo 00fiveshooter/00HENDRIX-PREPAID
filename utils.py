@@ -1,27 +1,4 @@
-import sqlite3
-
-def create_db():
-    conn = sqlite3.connect('cards.db')
-    c = conn.cursor()
-    c.execute('''CREATE TABLE IF NOT EXISTS users (
-        user_id INTEGER PRIMARY KEY,
-        balance REAL DEFAULT 0
-    )''')
-    c.execute('''CREATE TABLE IF NOT EXISTS cards (
-        id INTEGER PRIMARY KEY AUTOINCREMENT,
-        number TEXT,
-        exp TEXT,
-        cvv TEXT,
-        price REAL
-    )''')
-    c.execute('''CREATE TABLE IF NOT EXISTS orders (
-        user_id INTEGER,
-        card_number TEXT,
-        card_exp TEXT,
-        card_cvv TEXT,
-        price REAL
-    )''')
-    conn.commit()
+commit()
     conn.close()
 
 def get_balance(user_id):
